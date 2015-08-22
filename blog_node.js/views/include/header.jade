@@ -1,0 +1,75 @@
+//-
+   Created by zl on 2015/8/5.
+
+.container
+   .row
+      .page-header
+         h1= title
+.navbar.navbar-default.navbar-fixed-top
+   .container
+      .navbar-header
+         a.navbar-brand(href="/")
+            i.icon-heart.red
+            span  #{siteSetting.siteName}
+            i.icon-heart.red
+      .collapse.navbar-collapse
+         ul.nav.navbar-nav
+            li
+               a(href="/") 首页
+            li
+               a(href="/article/add") 添加内容
+         if !user
+            ul.nav.navbar-nav.navbar-right
+               li
+                  a.navbar-link(href="#",data-toggle="modal",data-target="#signupModal") 注册
+               li
+                  a.navbar-link(href="#",data-toggle="modal",data-target="#signinModal") 登录
+         else
+            ul.nav.navbar-nav.navbar-right
+               li
+                  a 欢迎您！
+               li
+                  a.navbar-link(href="/user/detail/#{user._id}") #{user.nickname}
+               li
+                  a.navbar-link(href="/user/signout") 注销
+
+#signupModal.modal.fade
+   .modal-dialog
+      .modal-content
+         form(method="post",action="/user/signup")
+            .modal-header 用户注册
+            .modal-body
+               .form-group
+                  label(for="signupName") 用户名
+                  input#signupName.form-control(name="user[name]",type="text")
+               .form-group
+                  label(for="signupNickname") 昵称
+                  input#signupNickname.form-control(name="user[nickname]",type="text")
+               .form-group
+                   label(for="signuEemail") 邮箱
+                   input#signuEemail.form-control(name="user[email]",type="email")
+               .form-group
+                  label(for="signupPassword") 密码
+                  input#signupPassword.form-control(name="user[password]",type="password")
+               .form-group
+                  label(for="signupPasswordAgain") 再次输入密码
+                  input#signupPasswordAgain.form-control(name="user[passwordAgain]",type="password")
+            .modal-footer
+                  button.btn.btn-default(type="button",data-dismiss="modal") 关闭
+                  button.btn.btn-success(type="submit") 提交
+
+#signinModal.modal.fade
+   .modal-dialog
+      .modal-content
+         form(method="post",action="/user/signin")
+            .modal-header 用户登录
+            .modal-body
+               .form-group
+                  label(for="signinName") 用户名
+                  input#signinName.form-control(name="user[name]",type="text")
+               .form-group
+                  label(for="signinPassword") 密码
+                  input#signinPassword.form-control(name="user[password]",type="password")
+            .modal-footer
+               button.btn.btn-default(type="button",data-dismiss="modal") 关闭
+               button.btn.btn-success(type="submit") 提交

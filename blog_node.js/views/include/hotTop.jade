@@ -1,0 +1,15 @@
+//
+   Created by zl on 2015/8/20.
+
+.panel.panel-zan.hot
+   .panel-header
+      i.icon-fire
+      span  最热文章
+      i.icon-remove.panel-remove
+      i.icon-chevron-up.panel-toggle
+   ul.list-group.list-group-flush
+      each item in hotArticles
+         li.list-group-item
+            span.post-title
+               a(title="#{item.title}",href="/article/detail/#{item._id}")= item.title
+            span.badge= item.clickTimes

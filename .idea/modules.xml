@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/node.js_test/blog_node.js.iml" filepath="$PROJECT_DIR$/node.js_test/blog_node.js.iml" />
+      <module fileurl="file://$PROJECT_DIR$/node.js_ejs_test/node.js_ejs_test.iml" filepath="$PROJECT_DIR$/node.js_ejs_test/node.js_ejs_test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test_java/test_java.iml" filepath="$PROJECT_DIR$/test_java/test_java.iml" />
+    </modules>
+  </component>
+</project>

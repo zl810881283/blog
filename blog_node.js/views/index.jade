@@ -1,0 +1,43 @@
+//
+   Created by zl on 2015/8/9.
+
+extends layout/default
+block content
+   .container
+      .row
+         .col-md-8
+            .article-list
+               each article in articles
+                  .article.well.clearfix
+                     i.icon-bookmark.article-stick.visible-md.visible-lg
+                     .article-data.hidden-xs
+                        span.month=article.meta._createAtMonth
+                        span.day=article.meta._createAtDay
+                     section.hidden-xs
+                        .article-title
+                           h1
+                              a(href="/article/detail/#{article._id}")= article.title
+                        .article-tag
+                           span.label.label-zan
+                              i.icon-edit
+                              span  #{article.meta._updateAt}
+                           span.label.label-zan
+                              i.icon-folder-open-alt
+                              span  #{article.clazz.name}
+                           span.label.label-zan
+                              i.icon-user
+                              span  #{article.author.nickname}
+                           span.label.label-zan
+                              i.icon-eye-open
+                              span  #{article.clickTimes}
+                        .article-content
+                           if article.picturePath
+                              figure.thumbnail
+                                 a(href="/article/detail/#{article._id}")
+                                    img.attachment-full.wp-post-image(src="/#{article._picturePath}")
+                           .alert.alert-zan !{article._content}
+                        a.btn.btn-danger.pull-right.read-more(href="/article/detail/#{article._id}",title="#{article.title}") 阅读全文
+                           span.badge
+                           //TODO: get number of comments
+         aside.col-md-4.hidden-sm
+            include ./include/hotTop

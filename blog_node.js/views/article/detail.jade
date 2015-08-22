@@ -1,0 +1,107 @@
+//
+   Created by zl on 2015/8/17.
+
+extends ../layout/default
+block content
+   .container
+      .row
+         .col-md-8.col-xs-12
+            article.article.well
+               .breadcrumb
+                  i.icon-home
+                  a.home(title="go to index",href="/")= siteSetting.siteName
+                  span= breadcrumb
+               .article-title
+                  h1
+                     a(href="/article/detail/#{article._id}")= article.title
+               .article-tag
+                  span.label.label-zan
+                     i.icon-file
+                     span  #{article.meta._createAt}
+                  span.label.label-zan
+                     i.icon-edit
+                     span  #{article.meta._updateAt}
+                  span.label.label-zan
+                     i.icon-folder-open-alt
+                     span  #{article.clazz.name}
+                  span.label.label-zan
+                     i.icon-user
+                     span  #{article.author.nickname}
+                  span.label.label-zan
+                     i.icon-eye-open
+                     span  #{article.clickTimes}
+               .article-content
+                  if article._picturePath
+                     figure.thumbnail.hidden-xs
+                        img.attachment-full.wp-post-image(src="/#{article._picturePath}")
+                  div !{article.content}
+            .comments-warp
+               h3.comments-header.alert.alert-info
+                  if comments
+                     i.icon-comments
+                     span  #{comments.length} 条评论
+                  else
+                     i.icon-comments
+                     span  0 条评论
+               if comments
+                  ol.comments-list
+                     each comment,i in comments
+                        li.comment
+                           article.comment-body
+                              .comment-meta
+                                 .comment-author
+                                    b.nickname= comment.author.nickname
+                                    span.says 说道:
+                                 .comment-data
+                                    time= comment.meta.createAt
+                              .comment-content
+                                 pre= comment.content
+                              .comment-reply
+                                 a.comment-reply-link(href="#comment",data-author-nickname="#{comment.author.nickname}",data-author="#{comment.author._id}",data-comment-id="#{comment._id}") 回复
+                           if comment.child
+                              ol.child
+                                 each val,index in comment.child
+                                    li.comment
+                                       article.comment-body
+                                          .comment-meta
+                                             .comment-author
+                                                b.nickname= val.author.nickname
+                                                span.says 说道:
+                                             .comment-data
+                                                time= val.meta.createAt
+                                          .comment-content
+                                             pre= val.content
+                                          .comment-reply
+                                             a.comment-reply-link(href="#comment",data-author-nickname="#{comment.author.nickname}",data-author="#{comment.author._id}",data-comment-id="#{comment._id}") 回复
+               .comment-respond
+                  h3.comment-reply-title
+                     i.icon-pencil
+                     span  欢迎留言
+                     a#comment-reply-cancel-link(href="#comment") 取消回复
+                  form(action="/comment/add" method="post" class="comment-form" novalidate="novalidate")
+                     textarea#comment(placeholder="赶快发表你的见解吧！" name="comment[content]" cols="45" rows="8" aria-required="true" class="valid")
+                     p.form-submit
+                        button(type="submit") 发表评论
+                        input(type="hidden",name="comment[reply]")
+                        input(type="hidden",name="comment[article]",value="#{article._id}")
+                        script.
+                           $(function(){
+                              $('#comment-reply-cancel-link').hide();
+                              $('.comment-reply .comment-reply-link').click(function(event){
+                                 $('input[name="comment[reply]"]').val($(this).data("comment-id"));
+                                 $('#comment').focus().val('回复 ' + $(this).data("author-nickname") + ' :\n');
+                                 $('#comment-reply-cancel-link').show();
+                              });
+
+                              $('#comment-reply-cancel-link').click(function(){
+                                 $('input[name="comment[reply]"]').val("");
+                                 $('#comment').focus().val('');
+                                 $(this).hide();
+                              });
+                           })
+
+         aside#sidebar.col-md-4.hidden-sm
+            include ../include/hotTop
+
+
+

@@ -1,0 +1,19 @@
+//
+   Created by zl on 2015/8/16.
+
+extends ../layout/default
+block content
+   .container
+      .row
+         p.h2#signout-success 注销成功，将在<span> </span>秒后跳至首页
+         p 再见！#{user.name}
+         a(href="/") 立即跳转
+   script(type="text/javascript").
+      var skipTime=#{siteSetting.autoJumpTime};
+      $('#signout-success span').text(skipTime);
+      setTimeout(function () {
+         window.location.href = '/';
+      }, skipTime*1000);
+      setInterval(function(){
+         $('#signout-success span').text(--skipTime);
+      },1000);

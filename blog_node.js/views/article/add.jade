@@ -1,0 +1,37 @@
+//
+   Created by zl on 2015/8/16.
+
+extends ../layout/default
+block content
+   .container
+      .row
+         form(method="post",action="/article/add",enctype="multipart/form-data")
+            .form-group.col-sm-12
+               label(for="title") 标题
+               input.form-control(id="title",name="article[title]",type="text",placeholder="请输入标题",required="true")
+
+            .form-group.col-sm-6
+               label(for="keyword") 关键字
+               select.form-control(id="keyword",name="article[keywords]",multiple)
+                  each val in keywords
+                     option(value="#{val._id}") #{val.name}
+
+            .col-sm-6
+               .form-group
+                  label(for="clazz") 分类
+                  select.form-control(id="clazz",name="article[clazz]")
+                     each val in classes
+                        option(value="#{val._id}") #{val.name}
+
+               .form-group
+                  label(for="picture") 首页图片
+                  input.form-control(id="picture",name="article[picture]",type='file',accept="image/*")
+
+            .form-group.col-sm-12
+               label(for="content") 内容
+
+               script(id="ueditor",type="text/plain",style="height:300px")
+               input.form-control(id="content",name="article[content]",type="hidden")
+            .col-sm-12
+               button.btn.btn-success(id="article-add-submit",type="submit") 提交
+   script(src="/javascripts/articleAdd.js")
