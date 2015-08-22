@@ -2,7 +2,6 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$/blog_node.js" libraries="{blog_node.js node_modules}" />
-    <file url="file://$PROJECT_DIR$/node.js_ejs_test" libraries="{Node.js v0.12.7 Core Modules, node.js_ejs_test node_modules}" />
     <includedPredefinedLibrary name="Node.js Globals" />
   </component>
 </project>
