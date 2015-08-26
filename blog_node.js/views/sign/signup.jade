@@ -1,28 +1,31 @@
 //
    Created by zl on 2015/8/16.
 
-extends ../layout/default
+extends ../layout/html
 block content
    .container
       .row
-         form(method="post",action="/user/signup")
-            .modal-body
-               .form-group
-                  label(for="signupName") 用户名
-                  input#signupName.form-control(name="user[name]",type="text",required="true")
-               .form-group
-                  label(for="signupNickname") 昵称
-                  input#signupNickname.form-control(name="user[nickname]",type="text",required="true")
-               .form-group
-                  label(for="signuEemail") 邮箱
-                  input#signuEemail.form-control(name="user[email]",type="email",required="true")
-               .form-group
-                  label(for="signupPassword") 密码
-                  input#signupPassword.form-control(name="user[password]",type="password",required="true")
-               .form-group
-                  label(for="signupPasswordAgain") 再次输入密码
-                  input#signupPasswordAgain.form-control(name="user[passwordAgain]",type="password",required="true")
-            .modal-footer
-               a.btn.btn-link(href="/staticHtml/signin") 返回登录
-               span &nbsp;|&nbsp;
-               button.btn.btn-success(type="submit") 提交
+         .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-10.col-xs-offset-1
+            form(method="post",action="/user/signup")
+               .modal-header
+                  h2 用户注册
+               .modal-body
+                  .form-group
+                     label(for="signupName") 用户名
+                     input#signupName.form-control(name="user[name]",type="text",required="true")
+                  .form-group
+                     label(for="signupNickname") 昵称
+                     input#signupNickname.form-control(name="user[nickname]",type="text",required="true")
+                  .form-group
+                     label(for="signuEemail") 邮箱
+                     input#signuEemail.form-control(name="user[email]",type="email",required="true")
+                  .form-group
+                     label(for="signupPassword") 密码
+                     input#signupPassword.form-control(name="user[password]",type="password",required="true")
+                  .form-group
+                     label(for="signupPasswordAgain") 再次输入密码
+                     input#signupPasswordAgain.form-control(name="user[passwordAgain]",type="password",required="true")
+               .modal-footer
+                  a.btn.btn-link(href="/signin") 返回登录
+                  span &nbsp;|&nbsp;
+                  button.btn.btn-success(type="submit") 提交

@@ -6,7 +6,7 @@ extends ../layout/html
 block content
    .container
       .row
-         .col-md-6.col-md-offset-3.col-sm-8.col-sm-off-2.col-xs-10.col-xs-offset-1
+         .col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-10.col-xs-offset-1
             form(method="post",action="/user/signin")
                .modal-header
                   h2 用户登录
@@ -18,8 +18,8 @@ block content
                      label(for="signinPassword") 密码
                      input#signinPassword.form-control(name="user[password]",type="password",required="true")
                .modal-footer
-                  if allNeedSignin
+                  if siteSetting.allNeedSignin
                      .alert.alert-danger 对不起，管理员设置登录后才可以产看本网站内容，请登录后再试
-                  a.btn.btn-link(href="/staticHtml/signup") 我要注册
+                  a.btn.btn-link(href="/signup") 我要注册
                   span &nbsp;|&nbsp;
                   button.btn.btn-success(type="submit") 提交

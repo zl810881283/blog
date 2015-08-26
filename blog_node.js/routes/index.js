@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var moment=require('moment');
+var moment=require('moment-timezone');
 
 var siteSetting=require('../setting/site');
 var Article=require('../model/Article');

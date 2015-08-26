@@ -30,11 +30,20 @@ block content
                   span.label.label-zan
                      i.icon-eye-open
                      span  #{article.clickTimes}
+                  if user && article.author._id.toString() === user._id.toString()
+                     span.label.label-zan
+                        i.icon-pencil
+                        a(href="/article/modify/#{article._id}")  修改文章
                .article-content
-                  if article._picturePath
+                  if article.picturePath
                      figure.thumbnail.hidden-xs
-                        img.attachment-full.wp-post-image(src="/#{article._picturePath}")
+                        img.attachment-full.wp-post-image(src="#{article.picturePath}")
                   div !{article.content}
+                  if article.meta.updateAt.toString() !== article.meta.createAt.toString()
+                     .alert.alert-warning.alert-dismissible
+                        a.close(href="#",data-dismiss="alert") &times;
+                        div 本文于 #{article.meta.__updateAt} 被 #{article.author.nickname} 修改
+
             .comments-warp
                h3.comments-header.alert.alert-info
                   if comments
@@ -53,7 +62,7 @@ block content
                                     b.nickname= comment.author.nickname
                                     span.says 说道:
                                  .comment-data
-                                    time= comment.meta.createAt
+                                    time= comment.meta._createAt
                               .comment-content
                                  pre= comment.content
                               .comment-reply
@@ -68,11 +77,11 @@ block content
                                                 b.nickname= val.author.nickname
                                                 span.says 说道:
                                              .comment-data
-                                                time= val.meta.createAt
+                                                time= val.meta._createAt
                                           .comment-content
                                              pre= val.content
                                           .comment-reply
-                                             a.comment-reply-link(href="#comment",data-author-nickname="#{comment.author.nickname}",data-author="#{comment.author._id}",data-comment-id="#{comment._id}") 回复
+                                             a.comment-reply-link(href="#comment",data-author-nickname="#{val.author.nickname}",data-author="#{val.author._id}",data-comment-id="#{comment._id}") 回复
                .comment-respond
                   h3.comment-reply-title
                      i.icon-pencil

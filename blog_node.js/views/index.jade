@@ -34,7 +34,7 @@ block content
                            if article.picturePath
                               figure.thumbnail
                                  a(href="/article/detail/#{article._id}")
-                                    img.attachment-full.wp-post-image(src="/#{article._picturePath}")
+                                    img.attachment-full.wp-post-image(src="#{article.picturePath}")
                            .alert.alert-zan !{article._content}
                         a.btn.btn-danger.pull-right.read-more(href="/article/detail/#{article._id}",title="#{article.title}") 阅读全文
                            span.badge

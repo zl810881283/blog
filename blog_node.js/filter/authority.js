@@ -15,6 +15,7 @@ module.exports=function(req,res,next){
     }
 
     //TODO: validate the authority
+    //TODO: validate the modify article authority
     next();
 
 };

@@ -8,6 +8,7 @@ var ObjectId=mongoose.Schema.Types.ObjectId;
 
 var ArticleSchema= new Schema({
     author:{type:ObjectId,ref:'User'},
+    lastModifyAuthor:{type:ObjectId,ref:'User'},
     title:String,
     content:String,
     picturePath:{type:String,default:""},
@@ -46,7 +47,7 @@ ArticleSchema.statics={
     fetch:function(cb){
         return this
             .find({})
-            .sort('meta.updateAt')
+            .sort({'meta.createAt':-1})
             .exec(cb);
     },
     fetchAndPopulate:function(cb){
@@ -54,7 +55,7 @@ ArticleSchema.statics={
             .find({})
             .populate('author')
             .populate('clazz')
-            .sort({'meta.updateAt':-1})
+            .sort({'meta.createAt':-1})
             .exec(cb);
     },
     findById:function(id,cb){

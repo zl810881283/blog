@@ -3,7 +3,7 @@
  */
 var express = require('express');
 var router = express.Router();
-var moment = require('moment');
+var moment = require('moment-timezone');
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 var ObjectId=mongoose.Schema.Types.ObjectId;
@@ -19,10 +19,20 @@ router.post('/add',function(req,res,next){
     var comment=new Comment(req.body.comment);
 
     comment.save(function(err){
-        if(err)
+        if(err){
             return next(err);
+
+        }
         res.redirect('/article/detail/'+req.body.comment.article);
     });
+});
+
+router.get('/modify/:cid',function(req,res,next){
+
+});
+
+router.post('/modify/:cid',function(req,res,next){
+
 });
 
 module.exports=router;

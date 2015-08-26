@@ -4,9 +4,10 @@ extends ../layout/default
 block content
    .container
       .row
-         p.h2#signin-success 登陆成功，将在<span> </span>秒后跳至首页
-         p 欢迎您！#{user.name}
-         a(href="/") 立即跳转
+         .col-md-6.col-md-offset-3
+            p.h2#signin-success 登陆成功，将在<span> </span>秒后跳至首页
+            p 欢迎您！#{user.name}
+            a(href="/") 立即跳转
    script(type="text/javascript").
       var skipTime=#{siteSetting.autoJumpTime};
       $('#signin-success span').text(skipTime);
