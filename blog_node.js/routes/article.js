@@ -54,15 +54,7 @@ var upload =multer({ storage: storage });
 
 router.use(function(req,res,next){
     req.local.breadcrumb=" / 文章 / ";
-
-    Article.findHotTop(function(err,articles){
-        if(err)
-            return next(err);
-        req.local.hotArticles=articles;
-        next();
-    })
-
-
+    next();
 });
 
 router.get('/add',function(req,res,next){
@@ -110,7 +102,7 @@ router.post('/add',upload.single('article[picture]'),function(req,res,next){
     });
 });
 
-router.get('/detail/:aid',function(req,res,next){
+router.get('/detail/:aid',require('../utils/hotTop'),require('../utils/newestComments'),function(req,res,next){
     Article.findById(req.params.aid,function(err,article){
         if(err)
             return next(err);

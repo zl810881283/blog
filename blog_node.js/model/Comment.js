@@ -57,6 +57,18 @@ CommentSchema.statics={
         return this
             .remove({})
             .exec(cb);
+    },
+    findNewest:function(num,cb){
+        if(typeof num !== "number" ){
+            cb=num;
+            num=10;
+        }
+
+        return this
+            .find({})
+            .sort({'meta.createAt':-1})
+            .limit(num)
+            .exec(cb);
     }
 };
 

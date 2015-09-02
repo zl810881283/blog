@@ -39,5 +39,26 @@ block content
                         a.btn.btn-danger.pull-right.read-more(href="/article/detail/#{article._id}",title="#{article.title}") 阅读全文
                            span.badge
                            //TODO: get number of comments
+                     section.visible-xs
+                        .article-title
+                           h3
+                              a(href="/article/detail/#{article._id}")= article.title
+                        p
+                           i.icon-calendar
+                           span  #{article.meta._createAt}&nbsp;
+                           i.icon-folder-open-alt
+                           span  #{article.clazz.name}&nbsp;
+                           i.icon-eye-open
+                           span  #{article.clickTimes}&nbsp;
+                        .article-content
+                           if article.picturePath
+                              figure.thumbnail
+                                 a(href="/article/detail/#{article._id}")
+                                    img.attachment-full.wp-post-image(src="#{article.picturePath}")
+                           .alert.alert-zan !{article._content}
+                        a.btn.btn-danger.pull-right.read-more(href="/article/detail/#{article._id}",title="#{article.title}") 阅读全文
+                           span.badge
+
          aside.col-md-4.hidden-sm
             include ./include/hotTop
+            include ./include/newestComments

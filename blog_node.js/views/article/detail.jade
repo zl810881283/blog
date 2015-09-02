@@ -11,32 +11,45 @@ block content
                   i.icon-home
                   a.home(title="go to index",href="/")= siteSetting.siteName
                   span= breadcrumb
-               .article-title
-                  h1
-                     a(href="/article/detail/#{article._id}")= article.title
-               .article-tag
-                  span.label.label-zan
-                     i.icon-file
-                     span  #{article.meta._createAt}
-                  span.label.label-zan
-                     i.icon-edit
-                     span  #{article.meta._updateAt}
-                  span.label.label-zan
-                     i.icon-folder-open-alt
-                     span  #{article.clazz.name}
-                  span.label.label-zan
-                     i.icon-user
-                     span  #{article.author.nickname}
-                  span.label.label-zan
-                     i.icon-eye-open
-                     span  #{article.clickTimes}
-                  if user && article.author._id.toString() === user._id.toString()
+               .hidden-xs
+                  .article-title
+                     h1
+                        a(href="/article/detail/#{article._id}")= article.title
+                  .article-tag
                      span.label.label-zan
-                        i.icon-pencil
-                        a(href="/article/modify/#{article._id}")  修改文章
+                        i.icon-file
+                        span  #{article.meta._createAt}
+                     span.label.label-zan
+                        i.icon-edit
+                        span  #{article.meta._updateAt}
+                     span.label.label-zan
+                        i.icon-folder-open-alt
+                        span  #{article.clazz.name}
+                     span.label.label-zan
+                        i.icon-user
+                        span  #{article.author.nickname}
+                     span.label.label-zan
+                        i.icon-eye-open
+                        span  #{article.clickTimes}
+                     if user && article.author._id.toString() === user._id.toString()
+                        span.label.label-zan
+                           i.icon-pencil
+                           a(href="/article/modify/#{article._id}")  修改文章
+               .visible-xs
+                  .article-title
+                     h3
+                        a(href="/article/detail/#{article._id}")= article.title
+                  p
+                     i.icon-calendar
+                     span  #{article.meta._createAt}&nbsp;
+                     i.icon-folder-open-alt
+                     span  #{article.clazz.name}&nbsp;
+                     i.icon-eye-open
+                     span  #{article.clickTimes}&nbsp;
+
                .article-content
                   if article.picturePath
-                     figure.thumbnail.hidden-xs
+                     figure.thumbnail
                         img.attachment-full.wp-post-image(src="#{article.picturePath}")
                   div !{article.content}
                   if article.meta.updateAt.toString() !== article.meta.createAt.toString()
@@ -55,7 +68,7 @@ block content
                if comments
                   ol.comments-list
                      each comment,i in comments
-                        li.comment
+                        li.comment(id="comment-#{comment._id}")
                            article.comment-body
                               .comment-meta
                                  .comment-author
@@ -70,7 +83,7 @@ block content
                            if comment.child
                               ol.child
                                  each val,index in comment.child
-                                    li.comment
+                                    li.comment(id="comment-#{val._id}")
                                        article.comment-body
                                           .comment-meta
                                              .comment-author
@@ -109,8 +122,8 @@ block content
                               });
                            })
 
-         aside#sidebar.col-md-4.hidden-sm
+         aside#sidebar.col-md-4.hidden-sm.hidden-xs
             include ../include/hotTop
-
+            include ../include/newestComments
 
 

@@ -1,0 +1,15 @@
+//
+   Created by zl on 2015/8/29.
+
+.panel.panel-zan.hot
+   .panel-header
+      i.icon-comments
+      span  最新评论
+      i.icon-remove.panel-remove
+      i.icon-chevron-up.panel-toggle
+   ul.list-group.list-group-flush
+      each item in newestComments
+         li.list-group-item
+            span.newest-comment
+               a(title="#{item.content}",href="/article/detail/#{item.article}#comment-#{item._id}")= item.content
+            span.badge= item.meta._createAt

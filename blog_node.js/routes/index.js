@@ -21,7 +21,7 @@ function genSummary(str){
 }
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', require('../utils/hotTop'),require('../utils/newestComments'),function(req, res, next) {
   req.local.title='首页';
   Article.fetchAndPopulate(function(err,articles){
     if(err)
@@ -40,12 +40,7 @@ router.get('/', function(req, res, next) {
     })
     req.local.articles=articles;
 
-    Article.findHotTop(function(err,hotArticles){
-      if(err)
-        return next(err);
-      req.local.hotArticles=hotArticles;
-      res.render('index', req.local);
-    })
+    res.render('index', req.local);
 
   })
 });

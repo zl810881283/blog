@@ -11,6 +11,8 @@ body {
 }
 
 a {
+  color: #d2322d;
+  text-decoration: none;
   &#comment-reply-cancel-link{
     padding: 2px 5px;
     background-color: #d9534f;
@@ -18,6 +20,7 @@ a {
     border-radius: 4px;
   }
   &:hover{
+    color: #b94a48;
     text-decoration: none;
   }
 }
@@ -70,6 +73,7 @@ a {
     }
   }
 }
+
 
 .article-tag {
   text-align: center;
@@ -276,6 +280,34 @@ a {
   }
   .badge{
     background-color: #d9534f;
+    max-width: 30%;
+  }
+  .list-group{
+    overflow: hidden;
+    max-height: 500px;
+    width: 100%;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+  }
+  &.toggled{
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    .list-group{
+      overflow: hidden;
+      max-height: 0px;
+      width: 100%;
+      //-webkit-transition: all .3s ease;
+      //-moz-transition: all .3s ease;
+      //-o-transition: all .3s ease;
+      //transition: all .3s ease;
+    }
   }
 }
 
@@ -330,11 +362,38 @@ a {
     transition: all 0.2s ease-in-out;
   }
 }
+.newest-comment{
+  width: 70%;
+  overflow: hidden;
+  margin: 0px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  float: left;
+}
+
+.panel>.list-group .list-group-item{
+  overflow: hidden;
+}
+
 //TODO: fix conflict
 .code{
   .container:after{
     &:after{
       display: block;
+    }
+  }
+}
+
+@media (max-width: 767px){
+  .article-title{
+    padding: 0px;
+  }
+  .comments-list{
+    .comment-body{
+      .comment-content {
+        padding: 10px 10px 20px 30px;
+      }
     }
   }
 }

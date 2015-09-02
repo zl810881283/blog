@@ -4,10 +4,12 @@
 var path = require('path');
 
 var siteSetting={};
-siteSetting.siteName="乐呵一贝子";
+siteSetting.siteName="~~~~~";
 siteSetting.allNeedSignin=true;
 siteSetting.hotTopNum=10;
 siteSetting.summaryLength=200;
+siteSetting.commentSummaryLength=20;
+
 siteSetting.autoJumpTime=3;
 
 siteSetting.dataPath=process.env.OPENSHIFT_DATA_DIR
