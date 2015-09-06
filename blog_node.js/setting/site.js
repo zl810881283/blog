@@ -4,7 +4,7 @@
 var path = require('path');
 
 var siteSetting={};
-siteSetting.siteName="~~~~~";
+siteSetting.siteName="乐呵一贝子";
 siteSetting.allNeedSignin=true;
 siteSetting.hotTopNum=10;
 siteSetting.summaryLength=200;

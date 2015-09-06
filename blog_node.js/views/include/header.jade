@@ -12,7 +12,10 @@
             i.icon-heart.red
             span  #{siteSetting.siteName}
             i.icon-heart.red
-      .collapse.navbar-collapse
+         button.navbar-toggle(type="button",data-toggle="collapse",data-target=".bs-navbar-collapse")
+            span.sr-only Toggle navigation
+            span.icon-reorder.icon-large
+      .collapse.navbar-collapse.bs-navbar-collapse
          ul.nav.navbar-nav
             li
                a(href="/") 首页
