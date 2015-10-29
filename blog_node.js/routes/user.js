@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 router.get('/detail/:uid', function(req, res, next) {
   var uid=req.params.uid;
   //TODO: show the user detail
+  console.log(uid);
 });
 
 router.post('/signup',function(req,res,next){
