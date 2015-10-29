@@ -1,20 +1,20 @@
 /**
  * Created by zl on 2015/8/21.
  */
-$(function(){
-    SyntaxHighlighter.highlight();
+$(function () {
 
-    $('.panel-zan .panel-remove').click(function(event){
+
+    $('.panel-zan .panel-remove').click(function (event) {
         $(this).parents('.panel').toggle(300);
     });
 
     var toggleBtn = $('.panel-toggle');
     toggleBtn.data('toggle', true);
-    toggleBtn.click(function() {
+    toggleBtn.click(function () {
 
         var btn = jQuery(this);
 
-        if(btn.data('toggle')) {
+        if (btn.data('toggle')) {
 
             btn.removeClass('icon-chevron-up').addClass('icon-chevron-down');
             btn.parents('div.panel').addClass('toggled');
@@ -27,4 +27,9 @@ $(function(){
         }
     });
 
-})
+    try {
+        SyntaxHighlighter.highlight();
+    } catch (e) {
+
+    }
+});

@@ -23,6 +23,8 @@ globalSetting.pageNavSize=5;
 globalSetting.autoJumpTime=3;
 //css js 静态资源使用CDN
 globalSetting.useCDN=true;
+//使用SyntaxHighlighter 代码高亮
+globalSetting.useSyntaxHighlighter=false;
 //数据存储位置
 globalSetting.dataPath=process.env.OPENSHIFT_DATA_DIR
     || path.join(__dirname, '../','public');

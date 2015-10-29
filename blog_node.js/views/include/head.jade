@@ -28,9 +28,9 @@ if needUeditor
    else
       script(type="text/javascript",charset="utf-8",src="/ueditor/ueditor.all.min.js")
       script(type="text/javascript",charset="utf-8",src="/ueditor/lang/zh-cn/zh-cn.js")
-
-link(rel='stylesheet', href='/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css')
-script(src="/ueditor/third-party/SyntaxHighlighter/shCore.min.js")
+if globalSetting.useSyntaxHighlighter
+   link(rel='stylesheet', href='/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css')
+   script(src="/ueditor/third-party/SyntaxHighlighter/shCore.min.js")
 
 link(rel='stylesheet', href='/stylesheets/style.css')
 script(src="/javascripts/sign.js")
