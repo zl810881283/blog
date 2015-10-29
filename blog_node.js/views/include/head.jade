@@ -1,20 +1,37 @@
 //-
    Created by zl on 2015/8/5.
 
-link(rel='stylesheet', href="/stylesheets/bootstrap.min.css")
-link(rel='stylesheet', href="/stylesheets/font-awesome.min.css")
-link(rel='stylesheet', href='/stylesheets/style.css')
-link(rel='stylesheet', href='/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css')
 
 
-script(src="/javascripts/jquery.min.js")
-script(src="/javascripts/bootstrap.min.js")
-script(src="/javascripts/sign.js")
-script(src="/javascripts/custom.js")
-script(src="/ueditor/third-party/SyntaxHighlighter/shCore.js")
+if globalSetting.useCDN
+   link(rel='stylesheet', href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css")
+   link(rel='stylesheet', href="//cdn.bootcss.com/font-awesome/3.2.1/css/font-awesome.min.css")
+
+   script(src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js")
+   script(src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.js")
+
+else
+   link(rel='stylesheet', href="/stylesheets/bootstrap.min.css")
+   link(rel='stylesheet', href="/stylesheets/font-awesome.min.css")
+
+   script(src="/javascripts/jquery.min.js")
+   script(src="/javascripts/bootstrap.min.js")
 
 if needUeditor
-   script(type="text/javascript",charset="utf-8",src="/ueditor/ueditor.config.js")
-   script(type="text/javascript",charset="utf-8",src="/ueditor/ueditor.all.min.js")
-   script(type="text/javascript",charset="utf-8",src="/ueditor/lang/zh-cn/zh-cn.js")
+   script(type="text/javascript",charset="utf-8",src="/ueditor/ueditor.config.min.js")
 
+   if globalSetting.useCDN
+      //
+         TODO change the ueditor js to cdn
+      script(type="text/javascript",charset="utf-8",src="/ueditor/ueditor.all.min.js")
+      script(type="text/javascript",charset="utf-8",src="/ueditor/lang/zh-cn/zh-cn.js")
+   else
+      script(type="text/javascript",charset="utf-8",src="/ueditor/ueditor.all.min.js")
+      script(type="text/javascript",charset="utf-8",src="/ueditor/lang/zh-cn/zh-cn.js")
+
+link(rel='stylesheet', href='/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css')
+script(src="/ueditor/third-party/SyntaxHighlighter/shCore.min.js")
+
+link(rel='stylesheet', href='/stylesheets/style.css')
+script(src="/javascripts/sign.js")
+script(src="/javascripts/custom.js")

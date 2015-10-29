@@ -9,7 +9,7 @@ block content
             p 欢迎您！#{user.name}
             a(href="/") 立即跳转
    script(type="text/javascript").
-      var skipTime=#{siteSetting.autoJumpTime};
+      var skipTime=#{globalSetting.autoJumpTime};
       $('#signin-success span').text(skipTime);
       setTimeout(function () {
          window.location.href = '/';

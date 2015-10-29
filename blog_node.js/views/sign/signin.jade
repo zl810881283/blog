@@ -18,7 +18,7 @@ block content
                      label(for="signinPassword") 密码
                      input#signinPassword.form-control(name="user[password]",type="password",required="true")
                .modal-footer
-                  if siteSetting.allNeedSignin
+                  if globalSetting.allNeedSignin
                      .alert.alert-danger 对不起，管理员设置登录后才可以产看本网站内容，请登录后再试
                   a.btn.btn-link(href="/signup") 我要注册
                   span &nbsp;|&nbsp;

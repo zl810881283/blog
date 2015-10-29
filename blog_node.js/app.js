@@ -10,7 +10,7 @@ var ueditor = require("ueditor");
 var mongoose=require('mongoose');
 var mongoStore=require('connect-mongo')(expressSession);
 var moment=require('moment-timezone');
-var siteSetting=require('./setting/site');
+var siteSetting=require('./setting/global');
 
 var routes = require('./routes/index');
 var user = require('./routes/user');
@@ -85,7 +85,7 @@ app.use("/ueditor/ue", ueditor(siteSetting.dataPath, function(req, res, next) {
 app.use(function(req,res,next){
   req.local={};
   req.local.user=req.session.user;
-  req.local.siteSetting=require('./setting/site');
+  req.local.globalSetting=require('./setting/global');
   next();
 });
 

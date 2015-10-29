@@ -55,7 +55,24 @@ ArticleSchema.statics={
             .find({})
             .populate('author')
             .populate('clazz')
+            .populate('keywords')
             .sort({'meta.createAt':-1})
+            .exec(cb);
+    },
+    fetchAndPopulateByPage:function(pageNo,pageSize,cb){
+        pageSize=parseInt(pageSize)|| 10;
+        pageNo=parseInt(pageNo) || 1;
+
+        var beginNo=(pageNo-1)*pageSize;
+
+        return this
+            .find({})
+            .populate('author')
+            .populate('clazz')
+            .populate('keywords')
+            .sort({'meta.createAt':-1})
+            .skip(beginNo)
+            .limit(pageSize)
             .exec(cb);
     },
     findById:function(id,cb){

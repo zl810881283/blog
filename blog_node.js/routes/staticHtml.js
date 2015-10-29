@@ -25,10 +25,20 @@ router.get('/test/:path',authority,function(req,res,next){
     }catch(e){
 
     }
+
+    //POST form body
+    console.log('==================body==================');
+    for(var item in req.body){
+        console.log(item+" => "+req.body[item]);
+    }
+
+    //GET params like /detail/:aid
     console.log('=================params=================');
     for(var item in req.params){
         console.log(item+" => "+req.params[item]);
     }
+
+    //GET query like /list?page=1
     console.log('==================query=================');
     for(var item in req.query){
         console.log(item+" => "+req.query[item]);

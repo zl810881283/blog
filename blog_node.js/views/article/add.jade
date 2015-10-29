@@ -30,8 +30,9 @@ block content
             .form-group.col-sm-12
                label(for="content") 内容
 
-               script(id="ueditor",type="text/plain",style="height:300px")
-               input.form-control(id="content",name="article[content]",type="hidden")
+               script(id="ueditor",name="article[content]",type="text/plain",style="height:300px")
+
             .col-sm-12
                button.btn.btn-success(id="article-add-submit",type="submit") 提交
-   script(src="/javascripts/articleAdd.js")
+         script.
+            var ue=UE.getEditor('ueditor');

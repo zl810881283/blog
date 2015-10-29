@@ -10,7 +10,7 @@ block content
             p 再见！#{user.name}
             a(href="/") 立即跳转
    script(type="text/javascript").
-      var skipTime=#{siteSetting.autoJumpTime};
+      var skipTime=#{globalSetting.autoJumpTime};
       $('#signout-success span').text(skipTime);
       setTimeout(function () {
          window.location.href = '/';

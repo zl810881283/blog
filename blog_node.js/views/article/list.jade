@@ -1,0 +1,79 @@
+//
+   Created by zl on 2015/10/29.
+
+extends ../layout/default
+block content
+   .container
+      .row
+         .col-md-8
+            .article-list
+               each article in articles
+                  .article.well.clearfix
+                     i.icon-bookmark.article-stick.visible-md.visible-lg
+                     .article-data.hidden-xs
+                        span.month=article.meta._createAtMonth
+                        span.day=article.meta._createAtDay
+                     section.hidden-xs
+                        .article-title
+                           h1
+                              a(href="/article/detail/#{article._id}")= article.title
+                        .article-tag
+                           span.label.label-zan
+                              i.icon-edit
+                              span  #{article.meta._updateAt}
+                           span.label.label-zan
+                              i.icon-folder-open-alt
+                              span  #{article.clazz.name}
+                           span.label.label-zan
+                              i.icon-user
+                              span  #{article.author.nickname}
+                           span.label.label-zan
+                              i.icon-eye-open
+                              span  #{article.clickTimes}
+                        .article-content
+                           if article.picturePath
+                              figure.thumbnail
+                                 a(href="/article/detail/#{article._id}")
+                                    img.attachment-full.wp-post-image(src="#{article.picturePath}")
+                           .alert.alert-zan !{article._content}
+                        a.btn.btn-danger.pull-right.read-more(href="/article/detail/#{article._id}",title="#{article.title}") 阅读全文
+                           span.badge
+                           //TODO: get number of comments
+                     section.visible-xs
+                        .article-title
+                           h3
+                              a(href="/article/detail/#{article._id}")= article.title
+                        p
+                           i.icon-calendar
+                           span  #{article.meta._createAt}&nbsp;
+                           i.icon-folder-open-alt
+                           span  #{article.clazz.name}&nbsp;
+                           i.icon-eye-open
+                           span  #{article.clickTimes}&nbsp;
+                        .article-content
+                           if article.picturePath
+                              figure.thumbnail
+                                 a(href="/article/detail/#{article._id}")
+                                    img.attachment-full.wp-post-image(src="#{article.picturePath}")
+                           .alert.alert-zan !{article._content}
+                        a.btn.btn-danger.pull-right.read-more(href="/article/detail/#{article._id}",title="#{article.title}") 阅读全文
+                           span.badge
+            .page
+               ul.pagination
+                  li
+                     a(href="/article/list/1" aria-label="Previous")
+                        span(aria-hidden="true") &laquo;
+                  -for(var i=pageNavRange.begin;i<=pageNavRange.end;i++)
+                     if currentPageNum==i
+                        li.active
+                           a(href="/article/list/#{i}")= i
+                     else
+                        li
+                           a(href="/article/list/#{i}")= i
+                  li
+                     a(href="/article/list/#{allPageNum}" aria-label="Next")
+                        span(aria-hidden="true") &raquo;
+
+         aside.col-md-4.hidden-sm
+            include ../include/hotTop
+            include ../include/newestComments
