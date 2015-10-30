@@ -34,5 +34,4 @@ router.get('/modify/:cid',function(req,res,next){
 router.post('/modify/:cid',function(req,res,next){
 
 });
-
 module.exports=router;
