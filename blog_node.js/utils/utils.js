@@ -23,14 +23,14 @@ function calaPageNavRange(currentPageNum, allPageNum, pageNavSize) {
         obj.begin = 1;
         obj.end = allPageNum;
     } else {
-        obj.begin = currentPageNum - pageNavSize / 2;
+        obj.begin = currentPageNum - parseInt(pageNavSize / 2);
         if (obj.begin < 1) {
             obj.begin = 1;
         }
-        obj.end = obj.begin + pageNavSize;
+        obj.end = obj.begin + pageNavSize - 1;
         if (obj.end > allPageNum) {
             obj.end = allPageNum;
-            obj.begin = end - pageNavSize;
+            obj.begin = obj.end - pageNavSize + 1;
         }
     }
     return obj;
@@ -39,4 +39,4 @@ function calaPageNavRange(currentPageNum, allPageNum, pageNavSize) {
 
 exports.delHtmlTag = delHtmlTag;
 exports.genSummary = genSummary;
-exports.calaPageNavRange=calaPageNavRange;
+exports.calaPageNavRange = calaPageNavRange;
