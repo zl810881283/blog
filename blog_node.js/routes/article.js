@@ -110,6 +110,7 @@ router.get('/detail/:aid', require('../utils/hotTop'), require('../utils/newestC
             return next();
         article.populate('author')
             .populate('clazz')
+            .populate('lastModifyAuthor')
             .populate(function (err, article) {
                 if (err) {
                     return next(err);
