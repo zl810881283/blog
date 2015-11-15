@@ -10,8 +10,8 @@ var CommentSchema= new Schema({
     reply:{type:ObjectId,ref:'Comment'},
     article:{type:ObjectId,ref:'Article'},
 
-    title:String,
-    content:String,
+    title:{type:String,default:""},
+    content:{type:String,default:""},
 
     meta:{
         createAt:{

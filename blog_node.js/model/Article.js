@@ -9,8 +9,8 @@ var ObjectId=mongoose.Schema.Types.ObjectId;
 var ArticleSchema= new Schema({
     author:{type:ObjectId,ref:'User'},
     lastModifyAuthor:{type:ObjectId,ref:'User'},
-    title:String,
-    content:String,
+    title:{type:String,default:""},
+    content:{type:String,default:""},
     picturePath:{type:String,default:""},
     clickTimes:{
         type:Number,

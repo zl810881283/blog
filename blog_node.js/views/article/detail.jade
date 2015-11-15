@@ -55,7 +55,7 @@ block content
                   if article.meta.updateAt.toString() !== article.meta.createAt.toString()
                      .alert.alert-warning.alert-dismissible
                         a.close(href="#",data-dismiss="alert") &times;
-                        div 本文于 #{article.meta.__updateAt} 被 #{article.author.nickname} 修改
+                        div 本文于 #{article.meta.__updateAt} 被 #{article.lastModifyAuthor.nickname} 修改
 
             .comments-warp
                h3.comments-header.alert.alert-info

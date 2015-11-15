@@ -7,8 +7,8 @@ var ObjectId=mongoose.Schema.Types.ObjectId;
 
 
 var ArticleClassSchema= new Schema({
-    name:String,
-    desc:String,
+    name:{type:String,default:""},
+    desc:{type:String,default:""},
 
     meta:{
         createAt:{
