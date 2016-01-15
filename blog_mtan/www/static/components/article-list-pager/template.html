@@ -1,0 +1,5 @@
+<ul class="pagination ">
+    <li><a [routerLink]="['ArticleList',{pageNo:1}]" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+    <li *ngFor="#pageNo of pageNavRange" [class.active]="pageNo==info.currentPage"><a [routerLink]="['ArticleList',{pageNo:pageNo}]">{{pageNo}}</a></li>
+    <li><a [routerLink]="['ArticleList',{pageNo:info.totalPages}]" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+</ul>

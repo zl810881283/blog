@@ -1,0 +1,28 @@
+<article class="article well">
+    <!--TODO:component the breadcrumb-->
+    <div class="breadcrumb"><i class="fa fa-home"></i><a title="go to index" href="/" class="home">乐呵一贝子</a><span> / 文章 / 剃毛前后一览表</span>
+    </div>
+    <div class="hidden-xs">
+        <div class="article-title"><h1><a [routerLink]="['Article',{id:article._id}]">{{article.title}}</a></h1>
+        </div>
+        <div class="article-tag">
+            <span class="label label-zan"><i class="fa fa-file"></i><span>{{article.meta.createAt}}</span></span>
+            <span class="label label-zan"><i class="fa fa-edit"></i><span>{{article.meta.updateAt}}</span></span>
+            <span class="label label-zan"><i class="fa fa-folder-open-o"></i><span>{{article.clazz.name}}</span></span>
+            <span class="label label-zan"><i class="fa fa-user"></i><span>{{article.author.nickname}}</span></span>
+            <span class="label label-zan"><i class="fa fa-eye"></i><span>{{article.clickTimes}}</span></span>
+        </div>
+    </div>
+    <div class="visible-xs">
+        <div class="article-title"><h3><a [routerLink]="['Article',{id:article._id}]">{{article.title}}</a></h3></div>
+        <p><i class="fa fa-calendar"></i><span>{{article.meta.createAt}}</span>
+            <i class="fa fa-folder-open-alt"></i><span>{{article.clazz.name}}</span>
+            <i class="fa fa-eye-open"></i><span>{{article.clickTimes}}</span>
+        </p>
+    </div>
+    <div class="article-content">
+        <figure class="thumbnail"><img src="/picture/748dcc80-abd2-11e5-9a40-5be5a042e73d.png"
+                                       class="attachment-full wp-post-image"></figure>
+        <div>{{article.content}}</div>
+    </div>
+</article>
