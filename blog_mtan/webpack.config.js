@@ -15,10 +15,10 @@ module.exports = {
             'angular2/router',
             'angular2/http'
         ],
-        app: path.join(__dirname, 'www','static','app.js')
+        app: path.join(__dirname, 'www', 'static', 'app.js')
     },
     output: {
-        path: path.join(__dirname ,'www','static','build'),
+        path: path.join(__dirname, 'www', 'static', 'build'),
         filename: '[name].bundle.js'
     },
     module: {
@@ -29,8 +29,12 @@ module.exports = {
                 test: /\.jsx?$/, loader: 'babel',
                 exclude: /node_modules/,
                 query: {
-                    stage: 1,
-                    plugins: ['typecheck', 'angular2-annotations']
+                    presets: ['es2015-loose', 'stage-1'],
+                    plugins: ['typecheck',
+                        'angular2-annotations',
+                        'transform-decorators-legacy',
+                        'transform-class-properties',
+                        'transform-flow-strip-types']
                 }
             },
             {test: /\.less$/, loader: 'raw!autoprefixer!less'},
@@ -39,7 +43,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['', '.json', '.js', '.jsx', '.less'],
-        modulesDirectories: ['node_modules', path.join(__dirname, 'www','static')]
+        modulesDirectories: ['node_modules', path.join(__dirname, 'www', 'static')]
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
@@ -50,7 +54,7 @@ module.exports = {
     devServer: {
         inline: true,
         colors: true,
-        historyApiFallback: {index:'/static/index.html'},
+        historyApiFallback: {index: '/static/index.html'},
         contentBase: path.join(__dirname, 'www'),
         publicPath: '/static/build/'
     }
