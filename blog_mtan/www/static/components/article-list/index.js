@@ -8,11 +8,13 @@ import {Http} from 'angular2/http'
 import ArticleListItem from 'components/article-list-item'
 import ArticleListPager from 'components/article-list-pager'
 
+let debug=require('debug')('component:article-list');
+
 @Component({
     selector: 'article-list',
     template: require('./template.html'),
     styles: [require('./style.less')],
-    directives: [ArticleListItem, ArticleListPager]
+    directives: [ArticleListItem,ArticleListPager]
 })
 export default class ArticleList {
     set articlesPaged(val) {
@@ -22,6 +24,7 @@ export default class ArticleList {
     }
 
     constructor(router:Router, http:Http,routeParams:RouteParams) {
+        debug('init');
         let pageNo = routeParams.get('pageNo') || 1;
         http.get('/api/article', {search: `pageNo=${pageNo}`}).subscribe((res)=> {
             try {

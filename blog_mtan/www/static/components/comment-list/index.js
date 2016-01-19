@@ -5,6 +5,7 @@ import {Component,Input} from 'angular2/core'
 import {Router,RouteParams} from 'angular2/router'
 import {Http} from 'angular2/http'
 
+let debug = require('debug')('component:comment-list');
 @Component({
     selector: 'comment-list',
     template: require('./template.html'),
@@ -13,12 +14,12 @@ import {Http} from 'angular2/http'
 export default class CommentList {
 
     constructor(router:Router, http:Http, routeParams:RouteParams) {
+        debug('init');
+        setTimeout(()=>debug(this.commentsPaged), 1500);
 
-        setTimeout(()=>console.log(this.commentsPaged),1500);
-
-        this.articleID = routeParams.get('id');
+        let id = this.articleID = routeParams.get('id');
         let pageNo = routeParams.get('pageNo') || 1;
-        http.get('/home/comment/article', {search: `pageNo=${pageNo}`}).subscribe((res)=> {
+        http.get('/home/comment/article', {search: `id=${id}&pageNo=${pageNo}`}).subscribe((res)=> {
             try {
                 let json = res.json();
                 if (!+json.errno) {

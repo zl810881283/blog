@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LessManager">
+    <option name="lessProfileMap">
+      <map>
+        <entry key="0">
+          <value>
+            <LessProfile>
+              <option name="compressOutput" value="true" />
+              <option name="cssDirectories">
+                <list>
+                  <CssDirectory>
+                    <option name="path" value="C:\Users\zl\IdeaProjects\work_space\blog_mtan\www\static\css" />
+                  </CssDirectory>
+                </list>
+              </option>
+              <option name="id" value="0" />
+              <option name="includePattern" value="bootstrap.less" />
+              <option name="lessDirPath" value="C:\Users\zl\IdeaProjects\work_space\blog_mtan\www\static\css\less\bootstrap" />
+              <option name="name" value="bootstrap" />
+            </LessProfile>
+          </value>
+        </entry>
+        <entry key="1">
+          <value>
+            <LessProfile>
+              <option name="compressOutput" value="true" />
+              <option name="cssDirectories">
+                <list>
+                  <CssDirectory>
+                    <option name="path" value="C:\Users\zl\IdeaProjects\work_space\blog_mtan\www\static\css" />
+                  </CssDirectory>
+                </list>
+              </option>
+              <option name="id" value="1" />
+              <option name="includePattern" value="style.less" />
+              <option name="lessDirPath" value="C:\Users\zl\IdeaProjects\work_space\blog_mtan\www\static\css\less" />
+              <option name="name" value="style" />
+            </LessProfile>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -5,15 +5,18 @@ import {Component,Input} from 'angular2/core'
 import {Router,ROUTER_DIRECTIVES} from 'angular2/router'
 import {Http} from 'angular2/http'
 
+let debug = require('debug')('component:article-list-pager');
+
 @Component({
     selector: 'article-list-pager',
     template: require('./template.html'),
     styles: [require('./style.less')],
-    directives:[ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES]
 })
 export default class ArticleListPager {
     @Input() set info(val) {
         this._info = val;
+        this.pageNavRange = ArticleListPager.calcPageNavRange(val.currentPage, val.totalPages, 5);
     }
 
     get info() {
@@ -21,10 +24,13 @@ export default class ArticleListPager {
     }
 
     constructor(router:Router, http:Http) {
+        debug('init');
+        setTimeout(()=>debug(this.info), 1000);
+
     }
 
     static calcPageNavRange(currentPageNum, allPageNum, pageNavSize) {
-        let begin ,end;
+        let begin, end;
         if (pageNavSize > allPageNum) {
             begin = 1;
             end = allPageNum;
@@ -40,8 +46,8 @@ export default class ArticleListPager {
             }
         }
 
-        let result=[];
-        for(let i=begin;i<=end;i++){
+        let result = [];
+        for (let i = begin; i <= end; i++) {
             result.push(i);
         }
         return result;

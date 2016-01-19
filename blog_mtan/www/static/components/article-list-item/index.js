@@ -4,6 +4,9 @@
 import {Component,Input} from 'angular2/core'
 import {Router,ROUTER_DIRECTIVES} from 'angular2/router'
 import {Http} from 'angular2/http'
+
+let debug=require('debug')('component:article-list-item');
+
 @Component({
     selector: 'article-list-item',
     template: require('./template.html'),
@@ -19,6 +22,6 @@ export default class ArticleListItem {
     }
 
     constructor(router:Router, http:Http) {
-
+        debug('init');
     }
 }

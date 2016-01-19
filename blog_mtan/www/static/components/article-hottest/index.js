@@ -5,6 +5,8 @@ import {Component,Input} from 'angular2/core'
 import {Router,ROUTER_DIRECTIVES} from 'angular2/router'
 import {Http} from 'angular2/http'
 
+let debug=require('debug')('component:article-hottest');
+
 @Component({
     selector: 'article-hottest',
     template: require('./template.html'),
@@ -15,6 +17,8 @@ export default class ArticelHottest {
 
 
     constructor(router:Router, http:Http) {
+        setTimeout(()=>debug(this.articles),1000);
+        debug('init');
         http.get('/home/article/hottest').subscribe((res)=> {
             try {
                 let json = res.json();

@@ -9,6 +9,8 @@ import ArticleList from 'components/article-list'
 import ArticleHottest from 'components/article-hottest'
 import CommentNewest from 'components/comment-newest'
 
+let debug=require('debug')('component:article-list-page');
+
 @Component({
     selector: 'article-list-page',
     template: require('./template.html'),
@@ -17,5 +19,6 @@ import CommentNewest from 'components/comment-newest'
 })
 export default class ArticleListPage {
      constructor(router:Router, http:Http, routeParams:RouteParams) {
+         debug('init');
     }
 }

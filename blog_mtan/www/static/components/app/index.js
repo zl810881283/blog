@@ -8,6 +8,8 @@ import Footer from 'components/footer'
 import Header from 'components/header'
 import ArticleListPage from 'components/article-list-page'
 import ArticleDetailPage from 'components/article-detail-page'
+
+let debug=require('debug')('component:app');
 @Component({
     selector: 'app',
     template: require('./template.html'),
@@ -26,5 +28,6 @@ import ArticleDetailPage from 'components/article-detail-page'
 ])
 export default class App {
     constructor(router:Router, http:Http) {
+        debug('init');
     }
 }

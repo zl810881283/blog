@@ -5,6 +5,8 @@ import {Component,Input} from 'angular2/core'
 import {Router,ROUTER_DIRECTIVES} from 'angular2/router'
 import {Http} from 'angular2/http'
 
+let debug=require('debug')('component:comment-newest');
+
 @Component({
     selector: 'comment-newest',
     template: require('./template.html'),
@@ -15,6 +17,8 @@ export default class CommentNewest {
 
 
     constructor(router:Router, http:Http) {
+        debug('init');
+        setTimeout(()=>debug(this.comments),1000);
         http.get('/home/comment/newest').subscribe((res)=> {
             try {
                 let json = res.json();

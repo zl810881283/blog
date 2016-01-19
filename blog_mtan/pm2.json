@@ -1,0 +1,16 @@
+{
+  "apps": [{
+    "name": "C:UserszlIdeaProjectswork_spaceblog_mtan",
+    "script": "www/production.js",
+    "cwd": "C:\Users\zl\IdeaProjects\work_space\blog_mtan/.",
+    "exec_mode": "cluster",
+    "instances": 0,
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}
