@@ -1,0 +1,18 @@
+<li id="comment-{{comment._id}}" class="comment">
+    <div class="comment-body">
+        <div class="comment-meta">
+            <div class="comment-author"><b class="nickname">{{comment.author.nickName}}</b><span class="says">说道:</span></div>
+            <div class="comment-data">
+                <time>{{comment.meta.createAt}}</time>
+            </div>
+        </div>
+        <div class="comment-content"><pre>{{comment.content}}</pre>
+        </div>
+        <div class="comment-reply">
+            <a href="#comment" data-author-nickname="李小贝"
+                                      class="comment-reply-link">回复</a></div>
+    </div>
+    <ol class="comment">
+        <comment-list-item [comment]="subcomment" *ngFor="#subcomment of comment.subcomments"></comment-list-item>
+    </ol>
+</li>

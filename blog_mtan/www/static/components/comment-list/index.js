@@ -5,17 +5,25 @@ import {Component,Input} from 'angular2/core'
 import {Router,RouteParams} from 'angular2/router'
 import {Http} from 'angular2/http'
 
+import CommentListItem from 'components/comment-list-item'
+
 let debug = require('debug')('component:comment-list');
 @Component({
     selector: 'comment-list',
     template: require('./template.html'),
-    styles: [require('./style.less')]
+    styles: [require('./style.less')],
+    directives:[CommentListItem]
 })
 export default class CommentList {
+    set commentsPaged(val) {
+        this.pagedInfo = val;
+        this.comments = val.data;
+        delete this.pagedInfo.data;
+    }
 
     constructor(router:Router, http:Http, routeParams:RouteParams) {
         debug('init');
-        setTimeout(()=>debug(this.commentsPaged), 1500);
+        setTimeout(()=>debug(this.pagedInfo, this.comments), 1500);
 
         let id = this.articleID = routeParams.get('id');
         let pageNo = routeParams.get('pageNo') || 1;
@@ -60,7 +68,47 @@ export default class CommentList {
                     "content": "回复 张小乐 :\r\n我也觉得，我们俩在一起之后估计还会有很多次像这样的拌嘴和磨合，不过每次我都会认真的反思，不断改进自己，做一个理想的女朋友。吵归吵，过完嘴皮子瘾我们还是恩爱的小两口儿，爱你。",
                     "title": "",
                     "__v": 0,
-                    "subcomments": []
+                    "subcomments": [{
+                        "_id": "5649f8f46ba60a496f7af432",
+                        "reply": "56499da46ba60a496f7af430",
+                        "article": "5648d3456ba60a496f7af42a",
+                        "author": "55d989d76d6b2b32c53a3577",
+                        "meta": {"updateAt": "2015-11-16T15:40:36.860Z", "createAt": "2015-11-16T15:40:36.860Z"},
+                        "content": "回复 张小乐 :\r\n我也觉得，我们俩在一起之后估计还会有很多次像这样的拌嘴和磨合，不过每次我都会认真的反思，不断改进自己，做一个理想的女朋友。吵归吵，过完嘴皮子瘾我们还是恩爱的小两口儿，爱你。",
+                        "title": "",
+                        "__v": 0,
+                        "subcomments": [{
+                            "_id": "5649f8f46ba60a496f7af432",
+                            "reply": "56499da46ba60a496f7af430",
+                            "article": "5648d3456ba60a496f7af42a",
+                            "author": "55d989d76d6b2b32c53a3577",
+                            "meta": {"updateAt": "2015-11-16T15:40:36.860Z", "createAt": "2015-11-16T15:40:36.860Z"},
+                            "content": "回复 张小乐 :\r\n我也觉得，我们俩在一起之后估计还会有很多次像这样的拌嘴和磨合，不过每次我都会认真的反思，不断改进自己，做一个理想的女朋友。吵归吵，过完嘴皮子瘾我们还是恩爱的小两口儿，爱你。",
+                            "title": "",
+                            "__v": 0,
+                            "subcomments": []
+                        }, {
+                            "_id": "5649fc896ba60a496f7af434",
+                            "reply": "56499da46ba60a496f7af430",
+                            "article": "5648d3456ba60a496f7af42a",
+                            "author": "55d989d76d6b2b32c53a3577",
+                            "meta": {"updateAt": "2015-11-16T15:55:53.970Z", "createAt": "2015-11-16T15:55:53.970Z"},
+                            "content": "回复 张小乐 :\r\n亲爱的，其实我内心一直非常感动，工作上你一直都是那么强势，但是感情中你却不断地包容我。其实我知道脾气坏的时候会特别糟，但我一直以为只是小时候。后来想想，我这臭脾气却常常发给自己最爱的人——我的爸爸妈妈弟弟妹妹，同学朋友几乎没有过。长大之后不经常回家，所以每次都提醒自己尽量要温和一点儿。现在遇到了你，慢慢地就又像回到了小时候，在至亲面前变得总是很随意，可以亲的如胶似漆，也可以吵的不可开交，其实我还是挺担心我的臭脾气、大嗓门会把你吓跑，我会慢慢改进自己，把这些不好的慢慢都改掉。",
+                            "title": "",
+                            "__v": 0,
+                            "subcomments": []
+                        }]
+                    }, {
+                        "_id": "5649fc896ba60a496f7af434",
+                        "reply": "56499da46ba60a496f7af430",
+                        "article": "5648d3456ba60a496f7af42a",
+                        "author": "55d989d76d6b2b32c53a3577",
+                        "meta": {"updateAt": "2015-11-16T15:55:53.970Z", "createAt": "2015-11-16T15:55:53.970Z"},
+                        "content": "回复 张小乐 :\r\n亲爱的，其实我内心一直非常感动，工作上你一直都是那么强势，但是感情中你却不断地包容我。其实我知道脾气坏的时候会特别糟，但我一直以为只是小时候。后来想想，我这臭脾气却常常发给自己最爱的人——我的爸爸妈妈弟弟妹妹，同学朋友几乎没有过。长大之后不经常回家，所以每次都提醒自己尽量要温和一点儿。现在遇到了你，慢慢地就又像回到了小时候，在至亲面前变得总是很随意，可以亲的如胶似漆，也可以吵的不可开交，其实我还是挺担心我的臭脾气、大嗓门会把你吓跑，我会慢慢改进自己，把这些不好的慢慢都改掉。",
+                        "title": "",
+                        "__v": 0,
+                        "subcomments": []
+                    }]
                 }, {
                     "_id": "5649fc896ba60a496f7af434",
                     "reply": "56499da46ba60a496f7af430",
