@@ -5,17 +5,28 @@ import {Component,Input} from 'angular2/core'
 import {Router,RouteParams} from 'angular2/router'
 import {Http} from 'angular2/http'
 
+import CommentListItem from 'components/comment-list-item'
+
 let debug = require('debug')('component:comment-list');
 @Component({
     selector: 'comment-list',
     template: require('./template.html'),
-    styles: [require('./style.less')]
+    styles: [require('./style.less')],
+    directives:[CommentListItem]
 })
 export default class CommentList {
+    set commentsPaged(val) {
+        this.comments = val.data;
+        this.pagedInfo = val;
+        delete this.pagedInfo.data;
+    }
+
 
     constructor(router:Router, http:Http, routeParams:RouteParams) {
         debug('init');
-        setTimeout(()=>debug(this.commentsPaged), 1500);
+        setTimeout(()=> {
+            debug(this.pagedInfo, this.pagedInfo)
+        }, 1500);
 
         let id = this.articleID = routeParams.get('id');
         let pageNo = routeParams.get('pageNo') || 1;
